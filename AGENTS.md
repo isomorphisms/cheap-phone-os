@@ -16,5 +16,5 @@
 
 ## Layout
 
-- Build, fetch, and generated work belongs under `_ /` conceptually; the actual repository path is `_/`.
+- Build, fetch, and generated work belongs under `_/`.
 - `_/aosp/` is a local complete AOSP checkout and is intentionally ignored by the controlling Git repository.

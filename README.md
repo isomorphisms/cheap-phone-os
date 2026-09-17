@@ -15,7 +15,7 @@ AOSP is a collection of Git repositories rather than one repository. This reposi
 ## Get the complete upstream tree
 
 ```sh
-./_/sync-upstream
+sh _/sync-upstream
 ```
 
 The script initializes Google's current AOSP manifest and synchronizes every repository selected by that manifest.

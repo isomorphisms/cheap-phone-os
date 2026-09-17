@@ -21,7 +21,7 @@ cd "$checkout"
 "$repo_bin" init \
     --partial-clone \
     --no-use-superproject \
-    -b android-latest-release \
-    -u https://android.googlesource.com/platform/manifest
+    -b cheap-phone-manifest \
+    -u https://github.com/isomorphisms/cheap-phone-os
 
 "$repo_bin" sync -c -j"$jobs"

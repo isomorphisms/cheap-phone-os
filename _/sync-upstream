@@ -1,0 +1,27 @@
+#!/bin/sh
+set -eu
+
+root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+checkout=${CHEAP_PHONE_OS_UPSTREAM_DIR:-"$root/_/aosp"}
+jobs=${JOBS:-8}
+repo_bin=$(command -v repo || true)
+
+if [ -z "$repo_bin" ]; then
+    mkdir -p "$root/_/bin"
+    repo_bin="$root/_/bin/repo"
+    if [ ! -x "$repo_bin" ]; then
+        curl -fL https://storage.googleapis.com/git-repo-downloads/repo -o "$repo_bin"
+        chmod +x "$repo_bin"
+    fi
+fi
+
+mkdir -p "$checkout"
+cd "$checkout"
+
+"$repo_bin" init \
+    --partial-clone \
+    --no-use-superproject \
+    -b android-latest-release \
+    -u https://android.googlesource.com/platform/manifest
+
+"$repo_bin" sync -c -j"$jobs"

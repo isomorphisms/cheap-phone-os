@@ -10,6 +10,11 @@ Canonical source:
 - tracking branch: `android-latest-release`
 - current platform branch: `android17-release`
 
+GitHub mirror branches in this repository:
+
+- `upstream-manifest` — exact imported history of Google's `android-latest-release` manifest branch
+- `cheap-phone-manifest` — the same manifest with the AOSP component remote made absolute so this GitHub repository can be used directly as a Repo manifest source
+
 AOSP is a collection of Git repositories rather than one repository. This repository is the controlling root for the tree; the manifest remains the authoritative inventory of upstream component repositories.
 
 ## Get the complete upstream tree
@@ -18,7 +23,7 @@ AOSP is a collection of Git repositories rather than one repository. This reposi
 sh _/sync-upstream
 ```
 
-The script initializes Google's current AOSP manifest and synchronizes every repository selected by that manifest.
+The script initializes from this repository's `cheap-phone-manifest` branch and synchronizes every AOSP component selected by that manifest from Google's canonical Git service.
 
 ## Mirror policy
 

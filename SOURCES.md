@@ -1,6 +1,6 @@
 # Android source map
 
-Observed 2026-09-17.
+Observed 2026-09-17; rechecked 2026-09-18.
 
 This file identifies the parts of Android that matter most to cheap-phone work. It is a working map, not a replacement for the complete manifest-selected tree.
 
@@ -13,12 +13,13 @@ This file identifies the parts of Android that matter most to cheap-phone work. 
 
 ## First-wave components
 
-| Tree path | Why it matters here | LineageOS | GrapheneOS |
+| AOSP checkout path / repository | Why it matters here | LineageOS | GrapheneOS |
 | --- | --- | --- | --- |
-| `platform/manifest` | Complete source inventory and revisions | `LineageOS/android` | `GrapheneOS/platform_manifest` |
+| `platform/manifest` | Manifest repository: complete source inventory and revisions; `repo` stores it under `.repo/manifests` rather than as a normal source checkout path | `LineageOS/android` | `GrapheneOS/platform_manifest` |
 | `build/make` | Product definitions, Android Go defaults, image composition | `LineageOS/android_build` | `GrapheneOS/platform_build` |
 | `build/soong` | Build graph and Android.bp machinery | `LineageOS/android_build_soong` | `GrapheneOS/platform_build_soong` |
-| `system/core` | init, properties, process groups, adb/fastboot plumbing, early boot | `LineageOS/android_system_core` | `GrapheneOS/platform_system_core` |
+| `system/core` | init, properties, process groups, fastboot plumbing, early boot | `LineageOS/android_system_core` | `GrapheneOS/platform_system_core` |
+| `packages/modules/adb` | Android Debug Bridge client/daemon implementation | `LineageOS/android_packages_modules_adb` | `GrapheneOS/platform_packages_modules_adb` |
 | `system/fs/fs_mgr` | Android 17 mount/fstab/verity/overlayfs code; directly relevant to new filesystems | In `android_system_core/fs_mgr` on `lineage-23.2`; follow the Lineage manifest as this split changes | `GrapheneOS/platform_system_fs_fs_mgr` |
 | `system/vold` | Removable/adoptable storage and volume lifecycle | `LineageOS/android_system_vold` | `GrapheneOS/platform_system_vold` |
 | `system/memory/lmkd` | Low-memory pressure policy; directly relevant to Android Go behavior | Current `lineage-23.2` manifest uses AOSP directly | Current GrapheneOS 17 manifest uses AOSP directly |
@@ -28,7 +29,7 @@ This file identifies the parts of Android that matter most to cheap-phone work. 
 | `bionic` | libc, dynamic linker, native process boundary | `LineageOS/android_bionic` | `GrapheneOS/platform_bionic` |
 | `libcore` | Java core libraries used by ART/framework code | Current `lineage-23.2` manifest uses AOSP directly | `GrapheneOS/platform_libcore` |
 | `libnativehelper` | JNI/native helper boundary | Current `lineage-23.2` manifest uses AOSP directly | Current GrapheneOS 17 manifest uses AOSP directly |
-| `hardware/interfaces` | HAL contracts for sensors, graphics, audio, camera, power and other hardware | `LineageOS/android_hardware_interfaces` | Current GrapheneOS 17 manifest uses AOSP directly |
+| `hardware/interfaces` | HAL contracts for sensors, graphics, audio, camera, power and other hardware | `LineageOS/android_hardware_interfaces` | `GrapheneOS/platform_hardware_interfaces` |
 | `system/sepolicy` | SELinux policy for services, filesystems, device nodes and permissions | `LineageOS/android_system_sepolicy` | `GrapheneOS/platform_system_sepolicy` |
 
 ## Kernel and device layer

@@ -1,6 +1,11 @@
 # source_name<TAB>git_remote<TAB>role
 aosp-manifest	https://android.googlesource.com/platform/manifest	canonical AOSP manifest history
 lineageos-manifest	https://github.com/LineageOS/android.git	broad device-support downstream manifest
+cyanogenmod-manifest	https://github.com/CyanogenMod/android.git	historical predecessor of LineageOS; full CyanogenMod manifest history
+cyanogenmod-build	https://github.com/CyanogenMod/android_build.git	historical CyanogenMod build-system fork
+cyanogenmod-frameworks-base	https://github.com/CyanogenMod/android_frameworks_base.git	historical CyanogenMod framework fork
+cyanogenmod-vendor-cm	https://github.com/CyanogenMod/android_vendor_cm.git	CyanogenMod product/configuration history
+cyanogenmod-vendor-cyanogen	https://github.com/CyanogenMod/android_vendor_cyanogen.git	older Cyanogen product/configuration history
 grapheneos-manifest	https://github.com/GrapheneOS/platform_manifest.git	hardened downstream manifest
 calyxos-manifest	https://gitlab.com/CalyxOS/platform_manifest.git	privacy-oriented downstream manifest
 crdroid-manifest	https://github.com/crdroidandroid/android.git	broad aftermarket-ROM manifest

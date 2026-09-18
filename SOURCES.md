@@ -7,6 +7,7 @@ This file identifies Android source layers that matter to cheap-phone work. It i
 ## Source families
 
 - **AOSP** is the canonical provenance baseline. `android-latest-release` currently selects `android17-release`.
+- **CyanogenMod** is the historical predecessor of LineageOS and remains a distinct source corpus. Preserve its manifest plus characteristic build, framework, and vendor/configuration forks rather than treating LineageOS as a substitute for the older history.
 - **LineageOS** supplies broad aftermarket device support. Its controlling manifest is `LineageOS/android`; the current default branch is `lineage-23.2`.
 - **GrapheneOS** supplies a hardened downstream and distinct security-oriented implementations. Its controlling manifest is `GrapheneOS/platform_manifest`; the current default branch is `17`.
 - The mirror inventory also seeds **CalyxOS**, **crDroid**, **BlissOS**, **Android-x86**, **/e/OS**, and the historical **DivestOS** build corpus. See `MIRRORS.tsv`.
@@ -87,6 +88,6 @@ Mirror breadth is a goal in its own right. Preserve every verified source family
 
 The components above are only a first-wave comparison table. They are not the boundary of the OS and they are not a ranking of downstreams.
 
-Keep source-family provenance explicit. AOSP, LineageOS, GrapheneOS, CalyxOS, crDroid, BlissOS, Android-x86, /e/OS, DivestOS, and later additions should remain distinguishable even when they share most Git objects.
+Keep source-family provenance explicit. AOSP, CyanogenMod, LineageOS, GrapheneOS, CalyxOS, crDroid, BlissOS, Android-x86, /e/OS, DivestOS, and later additions should remain distinguishable even when they share most Git objects.
 
 Cheap-phone changes remain another separately attributable layer. Physical-device observations remain separate from emulator and generic-platform evidence.

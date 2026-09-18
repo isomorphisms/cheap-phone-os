@@ -2,14 +2,16 @@
 
 Observed 2026-09-17; rechecked 2026-09-18.
 
-This file identifies the parts of Android that matter most to cheap-phone work. It is a working map, not a replacement for the complete manifest-selected tree.
+This file identifies Android source layers that matter to cheap-phone work. It is a working map, not a replacement for the complete manifest-selected trees.
 
 ## Source families
 
-- **AOSP** is the canonical upstream. `android-latest-release` currently selects `android17-release`.
-- **LineageOS** is the most useful broad device-support downstream to keep alongside AOSP. Its controlling manifest is `LineageOS/android`; the current default branch is `lineage-23.2`.
-- **GrapheneOS** is a useful hardened downstream and source of reference implementations. Its controlling manifest is `GrapheneOS/platform_manifest`; the current default branch is `17`.
-- A downstream manifest may use its own fork for one component and the AOSP repository directly for another. Always follow the manifest rather than assuming every path has a downstream fork.
+- **AOSP** is the canonical provenance baseline. `android-latest-release` currently selects `android17-release`.
+- **LineageOS** supplies broad aftermarket device support. Its controlling manifest is `LineageOS/android`; the current default branch is `lineage-23.2`.
+- **GrapheneOS** supplies a hardened downstream and distinct security-oriented implementations. Its controlling manifest is `GrapheneOS/platform_manifest`; the current default branch is `17`.
+- The mirror inventory also seeds **CalyxOS**, **crDroid**, **BlissOS**, **Android-x86**, **/e/OS**, and the historical **DivestOS** build corpus. See `MIRRORS.tsv`.
+- This list is a starting set, not an exclusion list. Add other public Android implementations, device trees, kernels, ports, and historical source when they contain a technically distinct answer worth preserving.
+- A downstream manifest may use its own fork for one component and AOSP directly for another. Always follow the manifest rather than assuming every path has a downstream fork.
 
 ## First-wave components
 
@@ -81,14 +83,10 @@ For direct rendering work, trace:
 
 ## Mirror policy
 
-The eventual GitHub mirror should include every repository selected by the controlling manifest, preserving repository boundaries and history.
+Mirror breadth is a goal in its own right. Preserve every verified source family that provides a viable or historically informative answer, then preserve the component repositories selected by those manifests.
 
-The components above are the first repositories worth making convenient to inspect, diff and modify. They are not the boundary of the OS.
+The components above are only a first-wave comparison table. They are not the boundary of the OS and they are not a ranking of downstreams.
 
-Keep three relationships explicit:
+Keep source-family provenance explicit. AOSP, LineageOS, GrapheneOS, CalyxOS, crDroid, BlissOS, Android-x86, /e/OS, DivestOS, and later additions should remain distinguishable even when they share most Git objects.
 
-1. canonical AOSP provenance;
-2. LineageOS changes and device-support work;
-3. GrapheneOS changes worth studying or selectively reproducing.
-
-Cheap-phone changes should remain a fourth, separately attributable layer.
+Cheap-phone changes remain another separately attributable layer. Physical-device observations remain separate from emulator and generic-platform evidence.

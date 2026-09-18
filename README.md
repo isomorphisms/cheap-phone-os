@@ -17,6 +17,8 @@ GitHub mirror branches in this repository:
 
 AOSP is a collection of Git repositories rather than one repository. This repository is the controlling root for the tree; the manifest remains the authoritative inventory of upstream component repositories.
 
+See [SOURCES.md](SOURCES.md) for the high-value AOSP layers and their current LineageOS and GrapheneOS counterparts.
+
 ## Get the complete upstream tree
 
 ```sh

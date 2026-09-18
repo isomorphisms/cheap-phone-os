@@ -1,0 +1,16 @@
+#!/bin/sh
+set -eu
+
+root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+tab=$(printf '\t')
+
+while IFS="$tab" read -r source_name source_url role
+do
+    case "$source_name" in
+        ''|'#'*) continue ;;
+    esac
+
+    printf '\n==> %s\n' "$source_name"
+    printf '    %s\n' "$role"
+    sh "$root/_/mirror-source" "$source_name" "$source_url"
+done < "$root/MIRRORS.tsv"

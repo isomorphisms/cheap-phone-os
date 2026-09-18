@@ -17,7 +17,7 @@ GitHub mirror branches in this repository:
 
 AOSP is a collection of Git repositories rather than one repository. This repository is the controlling root for the tree; the manifest remains the authoritative inventory of upstream component repositories.
 
-See [SOURCES.md](SOURCES.md) for the high-value AOSP layers and their current LineageOS and GrapheneOS counterparts.
+See [SOURCES.md](SOURCES.md) for the high-value Android layers and [MIRROR.md](MIRROR.md) for the breadth-first mirror policy. [MIRRORS.tsv](MIRRORS.tsv) is the seed inventory of source families whose branch and tag histories should be preserved here.
 
 ## Get the complete upstream tree
 
@@ -27,6 +27,16 @@ sh _/sync-upstream
 
 The script initializes from this repository's `cheap-phone-manifest` branch and synchronizes every AOSP component selected by that manifest from Google's canonical Git service.
 
+## Mirror source families
+
+To import every branch and tag from the currently inventoried source-family repositories into namespaced refs in this repository:
+
+```sh
+sh _/mirror-sources
+```
+
+The default target is this checkout's push URL for `origin`. Set `MIRROR_TARGET_URL` to another writable Git remote when testing.
+
 ## Mirror policy
 
-Do not treat the manifest repository alone as the operating system. Preserve upstream repository identity and provenance. Cheap-phone-specific work belongs on explicit branches or overlays so upstream source can continue to be reconciled cleanly.
+Do not treat the manifest repository alone as the operating system, and do not treat one downstream as the single answer. Preserve as many technically viable public implementations as practical, including historically useful implementations that answer a distinct design or device-support question. Keep repository identity, history, licenses, provenance, and physical-device evidence boundaries explicit. Cheap-phone-specific work belongs on explicit branches or overlays so source families can continue to be reconciled cleanly.

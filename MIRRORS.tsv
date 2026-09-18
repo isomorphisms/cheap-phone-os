@@ -1,0 +1,10 @@
+# source_name<TAB>git_remote<TAB>role
+aosp-manifest	https://android.googlesource.com/platform/manifest	canonical AOSP manifest history
+lineageos-manifest	https://github.com/LineageOS/android.git	broad device-support downstream manifest
+grapheneos-manifest	https://github.com/GrapheneOS/platform_manifest.git	hardened downstream manifest
+calyxos-manifest	https://gitlab.com/CalyxOS/platform_manifest.git	privacy-oriented downstream manifest
+crdroid-manifest	https://github.com/crdroidandroid/android.git	broad aftermarket-ROM manifest
+blissos-manifest	https://github.com/BlissOS/platform_manifest.git	x86 and Android-generic downstream manifest
+android-x86-manifest	https://github.com/android-x86/manifest.git	x86 Android port manifest
+eos-manifest	https://gitlab.e.foundation/e/os/android.git	/e/OS downstream manifest
+divestos-build	https://github.com/Divested-Mobile/DivestOS-Build.git	historical privacy/security and end-of-life-device build corpus

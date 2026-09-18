@@ -1,0 +1,53 @@
+#!/bin/sh
+set -eu
+
+if [ "$#" -ne 2 ]; then
+    printf 'usage: %s SOURCE_NAME GIT_REMOTE\n' "$0" >&2
+    exit 2
+fi
+
+source_name=$1
+source_url=$2
+
+case "$source_name" in
+    ''|*[!A-Za-z0-9._-]*)
+        printf 'invalid source name: %s\n' "$source_name" >&2
+        exit 2
+        ;;
+esac
+
+root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+
+if [ -n "${MIRROR_TARGET_URL:-}" ]; then
+    target_url=$MIRROR_TARGET_URL
+else
+    target_url=$(git -C "$root" remote get-url --push origin)
+fi
+
+tmp=$(mktemp -d "${TMPDIR:-/tmp}/cheap-phone-mirror.XXXXXX")
+trap 'rm -rf "$tmp"' EXIT HUP INT TERM
+
+git init --bare -q "$tmp"
+
+git -C "$tmp" fetch --no-tags "$source_url" \
+    '+refs/heads/*:refs/heads/*'
+git -C "$tmp" fetch "$source_url" \
+    '+refs/tags/*:refs/tags/*'
+
+git -C "$tmp" for-each-ref --format='%(refname)' refs/heads |
+while IFS= read -r ref
+do
+    branch=${ref#refs/heads/}
+    printf '%s branch %s\n' "$source_name" "$branch"
+    git -C "$tmp" push "$target_url" \
+        "$ref:refs/heads/mirror/$source_name/$branch"
+done
+
+git -C "$tmp" for-each-ref --format='%(refname)' refs/tags |
+while IFS= read -r ref
+do
+    tag=${ref#refs/tags/}
+    printf '%s tag %s\n' "$source_name" "$tag"
+    git -C "$tmp" push "$target_url" \
+        "$ref:refs/tags/mirror/$source_name/$tag"
+done

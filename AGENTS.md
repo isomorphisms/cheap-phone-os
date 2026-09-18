@@ -7,6 +7,15 @@
 - AOSP is a manifest-selected collection of repositories. Never describe the manifest repository alone as a complete Android source mirror.
 - Preserve upstream repository names, history, licenses, and provenance when importing or reconciling source.
 
+## Source plurality
+
+- AOSP is the provenance baseline, not the only implementation worth preserving.
+- Mirror as many technically viable public Android implementations as practical. Include current projects and historically useful projects when they contain a distinct implementation, device-support strategy, hardening approach, or compatibility answer.
+- Do not select one downstream as the repository's winner and discard the others.
+- Keep each imported repository and source family identifiable in namespaced refs. Identical Git objects may share storage, but provenance mappings must remain explicit.
+- Do not erase an existing mirror ref merely because an upstream repository disappears, drops a branch, or rewrites history. Preserve the old state before accepting a non-fast-forward replacement.
+- A manifest that points directly at AOSP and a manifest that points at a downstream fork are materially different provenance claims even when most of the tree is shared.
+
 ## Cheap-phone work
 
 - Keep cheap-phone-specific changes distinguishable from upstream source.
